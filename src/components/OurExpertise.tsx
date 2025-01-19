@@ -1,9 +1,14 @@
 import React, { useEffect, useRef } from "react";
 
-const OurExpertise = () => {
-  const scrollRef = useRef(null);
+type Website = {
+  image: string;
+  title: string;
+};
 
-  const websites = [
+const OurExpertise: React.FC = () => {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  const websites: Website[] = [
     {
       image:
         "https://image.lexica.art/full_webp/1d60b00e-fcd3-4d40-a993-c8fc5d018304",
@@ -17,22 +22,20 @@ const OurExpertise = () => {
     {
       image:
         "https://image.lexica.art/full_webp/cf3211c0-c6a4-487a-99e3-d6d17d7c6643",
-      title: "ios & android Mobile Apps",
+      title: "iOS & Android Mobile Apps",
     },
   ];
 
   useEffect(() => {
     const scrollElement = scrollRef.current;
     let scrollPosition = 0;
-    let animationFrameId;
-    const scrollSpeed = 1.5; // Reduced speed for smoother scrolling
+    let animationFrameId: number;
+    const scrollSpeed = 1.5;
 
     const scroll = () => {
       if (scrollElement) {
-        // Update scroll position
         scrollPosition += scrollSpeed;
 
-        // Reset position when reaching the middle point
         if (scrollPosition >= scrollElement.scrollWidth / 2) {
           scrollPosition = 0;
           scrollElement.scrollLeft = 0;
@@ -40,15 +43,12 @@ const OurExpertise = () => {
           scrollElement.scrollLeft = scrollPosition;
         }
 
-        // Continue animation
         animationFrameId = requestAnimationFrame(scroll);
       }
     };
 
-    // Start the animation
     animationFrameId = requestAnimationFrame(scroll);
 
-    // Pause animation when tab is not visible
     const handleVisibilityChange = () => {
       if (document.hidden) {
         cancelAnimationFrame(animationFrameId);
@@ -59,7 +59,6 @@ const OurExpertise = () => {
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
@@ -72,7 +71,7 @@ const OurExpertise = () => {
         Our Expertise
       </h2>
 
-      <div className="relative w-full overflow-hidden ">
+      <div className="relative w-full overflow-hidden">
         <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-10" />
         <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10" />
 
