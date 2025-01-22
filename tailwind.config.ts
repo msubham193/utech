@@ -9,11 +9,8 @@ export default {
   ],
   theme: {
     extend: {
-		fontFamily: {
-			poppins: ['var(--font-poppins)'],
-		  },
-      animation: {
-        "spin-slow": "spin 20s linear infinite",
+      fontFamily: {
+        poppins: ["var(--font-poppins)"],
       },
       colors: {
         background: "hsl(var(--background))",
@@ -74,6 +71,7 @@ export default {
         shine: "shine var(--duration) infinite linear",
         "background-position-spin":
           "background-position-spin 3000ms infinite alternate",
+        "spin-slow": "spin 20s linear infinite",
       },
       keyframes: {
         orbit: {
