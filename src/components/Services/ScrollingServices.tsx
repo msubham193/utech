@@ -31,15 +31,22 @@ const ScrollingServices = () => {
   ];
 
   return (
-    <div className="w-full overflow-hidden bg-black py-8">
-      <div className="flex animate-scroll">
+    <div className="relative w-full overflow-hidden bg-[#121219] py-8">
+      {/* Left gradient overlay */}
+      <div className="absolute left-0 top-0 z-10 h-full w-56 bg-gradient-to-r from-[#121219] to-transparent" />
+
+      {/* Right gradient overlay */}
+      <div className="absolute right-0 top-0 z-10 h-full w-56 bg-gradient-to-l from-[#121219] to-transparent" />
+
+      {/* Scrolling content */}
+      <div className="flex animate-scroll relative">
         {services.map((service, index) => (
           <div key={index} className="flex items-center flex-shrink-0 mx-8">
             <div className="flex items-center">
               <div className="bg-gray-800 rounded-full p-2 mr-4">
                 <div className="text-white">{service.icon}</div>
               </div>
-              <h3 className="text-xl font-medium text-white">
+              <h3 className="text-lg font-medium text-slate-300">
                 {service.title}
               </h3>
             </div>
