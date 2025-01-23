@@ -32,16 +32,13 @@ const OurExpertise = () => {
   };
 
   return (
-    <div className="w-full bg-[#121219] py-24 px-4">
+    <div className="w-full bg-[#121219] py-20 px-4">
       <h2 className="text-4xl font-bold text-center text-white mb-12">
         Our Expertise
       </h2>
 
-      <div className="relative w-full max-w-6xl mx-auto overflow-hidden">
-        <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-[#121219] to-transparent z-10" />
-        <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-[#121219] to-transparent z-10" />
-
-        <div className="flex justify-center items-center gap-8 py-4 px-8">
+      <div className="relative w-full max-w-5xl mx-auto overflow-hidden  py-10">
+        <div className="flex justify-center items-center gap-4 py-4 px-8  ">
           {getVisibleWebsites().map((site, index) => {
             const isCenter = index === 1;
 
@@ -54,10 +51,13 @@ const OurExpertise = () => {
                   transition-all 
                   duration-500 
                   ease-in-out
+                  rounded-2xl
+                  shadow-md
+                  shadow-black
                   ${
                     isCenter
-                      ? "w-[600px] scale-110 z-10"
-                      : "w-[400px] opacity-70"
+                      ? "w-[70%] h-[500px]   z-10" // Center component is larger
+                      : "w-[30%] h-[300px] opacity-70" // Side components are smaller
                   }
                 `}
                 onClick={() =>
@@ -70,12 +70,12 @@ const OurExpertise = () => {
                   )
                 }
               >
-                <div className="rounded-2xl overflow-hidden shadow-2xl bg-transparent">
-                  <div className="relative aspect-[2]">
+                <div className="overflow-hidden  bg-transparent h-full">
+                  <div className="relative h-[80%] ">
                     <img
                       src={site.image}
                       alt={site.title}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover     rounded-2xl"
                       draggable="false"
                     />
                   </div>
@@ -86,7 +86,7 @@ const OurExpertise = () => {
                       text-white 
                       transition-all 
                       duration-500
-                      ${isCenter ? "text-xl" : "text-lg"}
+                      ${isCenter ? "text-lg" : "text-sm"}
                     `}
                     >
                       {site.title}

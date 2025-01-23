@@ -3,7 +3,7 @@ import { Mail, Facebook, Twitter, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-transparent text-white py-16 ">
+    <footer className="bg-gradient-to-b from-transparent to-black text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 justify-center">
           {/* Services Section */}
@@ -64,6 +64,7 @@ const Footer = () => {
               <p>PIN- 751010</p>
               <p>Bhubaneswar,Odisha</p>
               <p>+91 7205580247</p>
+              <p>utechsolutionspvtltd@gmail.com</p>
             </address>
           </div>
         </div>

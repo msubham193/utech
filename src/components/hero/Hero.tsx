@@ -48,7 +48,7 @@ const Hero = () => {
         <NeonGradientCard className="relative ">
           <div className="bg-gradient-to-r from-purple-500/30 to-blue-500/30 absolute inset-0 blur-3xl -z-10" />
           <img
-            src="./banner.png"
+            src="./banner1.png"
             alt="TodoFusion App Interface"
             className="w-full rounded-2xl border border-gray-800 shadow-2xl relative"
           />

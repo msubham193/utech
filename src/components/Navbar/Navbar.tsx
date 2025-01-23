@@ -67,18 +67,6 @@ const Navbar = () => {
             >
               About
             </a>
-            <a
-              href="/docs"
-              className="text-white hover:text-gray-300 transition-colors"
-            >
-              Docs
-            </a>
-            <a
-              href="/ui-kit"
-              className="text-white hover:text-gray-300 transition-colors"
-            >
-              UI Kit
-            </a>
           </div>
         </div>
 
@@ -88,7 +76,7 @@ const Navbar = () => {
           </button>
           <a
             href="/remix-template"
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors shadow-lg shadow-purple-500/30"
+            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl transition-colors shadow-lg shadow-purple-500/30"
           >
             FAQ
           </a>
