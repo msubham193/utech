@@ -1,66 +1,53 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
-
-const NewsletterSignup = () => {
-  const controls = useAnimation();
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            controls.start("visible");
-          } else {
-            controls.start("hidden");
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
-    };
-  }, [controls]);
-
+export default function Newsletter() {
   return (
-    <motion.div
-      ref={containerRef}
-      className="bg-transparent py-20 px-4 flex flex-col items-center justify-center"
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      transition={{ duration: 0.5 }}
-    >
-      <h2 className="text-4xl font-bold text-white mb-3">
-        Join our community
-      </h2>
-      <p className="text-gray-400 text-center max-w-xl mb-8">
-        Join our community for exclusive insights, announcements, and special
-        offers delivered directly to your inbox.
-      </p>
-      <div className="w-full max-w-md">
-        <input
-          type="email"
-          placeholder="Enter your email"
-          className="bg-gray-900 text-white rounded-xl py-3 px-4 w-full mb-4"
-        />
-        <button className=" bg-purple-500 text-white rounded-xl py-3 px-6 w-full font-medium hover:bg-purple-600 transition-colors">
-          Subscribe
-        </button>
-      </div>
-    </motion.div>
-  );
-};
+    <section className="relative overflow-hidden bg-transparent py-28">
+      {/* Decorative mesh background */}
+      <div
+        className="absolute top-100 right-0 inset-0 opacity-20"
+        style={{
+          backgroundImage: `url(${encodeURI(
+            "https://framerusercontent.com/images/3zzvKeH39ZfIEJWMuu6IeSmmiyw.png?scale-down-to=2048"
+          )})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
 
-export default NewsletterSignup;
+      {/* Purple gradient line */}
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-purple-500/0 via-purple-500/70 to-purple-500/0" />
+
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="max-w-xl">
+            <h2 className="text-4xl font-bold tracking-tight">
+              <span className="text-white">Join our </span>
+              <span className="text-gray-500">community</span>
+            </h2>
+            <p className="mt-4 text-lg text-gray-400">
+              Join our community for exclusive insights, announcements, and
+              special offers delivered directly to your inbox.
+            </p>
+          </div>
+          <div className="flex items-center">
+            <form className="flex w-full max-w-md gap-3">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 rounded-xl bg-gray-900 px-4 py-3 text-white placeholder-gray-400 ring-1 ring-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500"
+                required
+              />
+              <button
+                type="submit"
+                className="rounded-xl bg-white px-6 py-3 font-semibold text-black transition-colors hover:bg-gray-100 "
+              >
+                 Join
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

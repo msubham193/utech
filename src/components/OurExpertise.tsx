@@ -56,7 +56,7 @@ const OurExpertise = () => {
                   shadow-black
                   ${
                     isCenter
-                      ? "w-[70%] h-[500px]   z-10" // Center component is larger
+                      ? "w-[70%] h-[400px]   z-10" // Center component is larger
                       : "w-[30%] h-[300px] opacity-70" // Side components are smaller
                   }
                 `}
@@ -71,7 +71,7 @@ const OurExpertise = () => {
                 }
               >
                 <div className="overflow-hidden  bg-transparent h-full">
-                  <div className="relative h-[80%] ">
+                  <div className="relative h-[68%] ">
                     <img
                       src={site.image}
                       alt={site.title}

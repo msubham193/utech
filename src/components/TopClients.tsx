@@ -31,7 +31,7 @@ const TopClients = () => {
             <div className="relative">
               {/* Logo placeholder */}
               <div className="w-32 h-16 flex items-center justify-center">
-                <span className="text-lg text-gray-300 font-medium group-hover:text-gray-800 transition-colors duration-300">
+                <span className="text-lg text-gray-300 font-medium group-hover:text-gray-400 transition-colors duration-300">
                   {client.name}
                 </span>
               </div>

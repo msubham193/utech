@@ -1,5 +1,6 @@
 "use client";
 import ExperienceSection from "@/components/ExperienceSection";
+import FAQSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
 import Hero from "@/components/hero/Hero";
 import NewsletterSignup from "@/components/NewsletterSection";
@@ -23,6 +24,8 @@ export default function Home() {
       <TechSection />
       <WorldwideSectionWithStyles />
       <TopClients />
+
+      <FAQSection />
       <NewsletterSignup />
       <Footer />
     </div>
