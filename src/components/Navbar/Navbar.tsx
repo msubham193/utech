@@ -94,13 +94,8 @@ const Navbar = () => {
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
           <a
-<<<<<<< HEAD
-            href="/remix-template"
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl transition-colors shadow-lg shadow-purple-500/30"
-=======
             href="/faq"
             className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50"
->>>>>>> dev
           >
             FAQ
           </a>

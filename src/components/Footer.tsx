@@ -4,11 +4,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-<<<<<<< HEAD
     <footer className="bg-gradient-to-b from-transparent to-black text-white py-16">
-=======
-    <footer className="bg-transparent text-white py-8 sm:py-12 md:py-16">
->>>>>>> dev
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 justify-center">
           {/* Services Section */}
