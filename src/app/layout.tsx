@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
+import logo from '../../public/logo.png'
 import Navbar from "@/components/Navbar/Navbar";
 
 const geistSans = Geist({
@@ -21,9 +23,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Utech",
-  description:
-    "utkaltechsolutions is a software development company that provides software solutions to the Internet community and provides services to the Clients",
+  title: "Utech Solutions | Technology Innovation",
+  description: "Innovative technology solutions for modern businesses",
+  icons: {
+    icon: '/logo.png',
+  },
 };
 
 export default function RootLayout({
@@ -33,8 +37,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo.png" sizes="any" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable}  antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
         <Navbar />
         {children}
