@@ -75,8 +75,13 @@ const Navbar = () => {
             <div className="w-5 h-5" /> {/* Placeholder for moon icon */}
           </button>
           <a
+<<<<<<< HEAD
+            href="/faq"
+            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50"
+=======
             href="/remix-template"
             className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl transition-colors shadow-lg shadow-purple-500/30"
+>>>>>>> parent of 89d8b26 ('...')
           >
             FAQ
           </a>
