@@ -3,14 +3,14 @@ import React from "react";
 import { BorderBeam } from "../ui/border-beam";
 import { NeonGradientCard } from "../ui/neon-gradient-card";
 import { TextAnimate } from "../ui/text-animate";
-import { BackgroundBeamsWithCollision } from "../ui/background-beams-with-collision";
+
 
 const Hero = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b bg-[#121219] pt-16 px-6">
       {/* TOP SECTION - Side by Side Layout */}
-
-      <BackgroundBeamsWithCollision>
+{/* 
+      <BackgroundBeamsWithCollision> */}
         {" "}
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center mb-5">
           <div className="text-left ml-10 w-full">
@@ -46,7 +46,7 @@ const Hero = () => {
 
           {/* Right Side - Text Content */}
         </div>
-      </BackgroundBeamsWithCollision>
+      {/* </BackgroundBeamsWithCollision> */}
 
       {/* Bottom Section - App Screenshot */}
       <div className="max-w-6xl mx-auto mb-36">
