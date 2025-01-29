@@ -17,15 +17,34 @@ export default function Home() {
   return (
     <div className="bg-black h-screen text-white items-center justify-center align-middle font-poppins">
       <ScrollProgress className="top-0" />
-      <Hero />
+      <div id="home" className="min-h-screen">
+        {/* Home section content */}
+        <Hero />
+      </div>
+
       <ScrollingServices />
-      <OurExpertise />
-      <ExperienceSection />
-      <TechSection />
+      <div id="why-us" className="min-h-screen">
+        {/* Why Us section content */}
+        <OurExpertise />
+      </div>
+
+      <div id="services" className="min-h-screen">
+        {/* Services section content */}
+        <ExperienceSection />
+      </div>
+
+      <div id="about" className="min-h-screen">
+        {/* About section content */}
+        <TechSection />
+      </div>
+
       <WorldwideSectionWithStyles />
       <TopClients />
+      <div id="faq" className="min-h-screen">
+        {/* FAQ section content */}
+        <FAQSection />
+      </div>
 
-      <FAQSection />
       <NewsletterSignup />
       <Footer />
     </div>

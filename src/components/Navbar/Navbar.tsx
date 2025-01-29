@@ -16,57 +16,70 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [scrolled]);
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300  ${
+      className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "  top-5 w-[100%] backdrop-blur-sm py-2 shadow-lg  rounded-2xl"
+          ? "top-5 w-[100%] backdrop-blur-sm py-2 shadow-lg rounded-2xl"
           : "bg-transparent py-4"
       }`}
     >
       <div
         className={`max-w-7xl mx-auto px-6 flex items-center justify-between ${
           scrolled
-            ? "bg-gray-800/60  top-5 w-[90%] backdrop-blur-sm py-2 shadow-lg  rounded-2xl"
+            ? "bg-gray-800/60 top-5 w-[90%] backdrop-blur-sm py-2 shadow-lg rounded-2xl"
             : "bg-transparent py-4"
         }`}
       >
         <div className="flex items-center space-x-8">
           {/* Logo */}
-          <a href="/" className="bg-white rounded-lg">
+          <button 
+            onClick={() => scrollToSection("home")} 
+            className="bg-white rounded-lg"
+          >
             <img
               src="/logo.png"
               alt="Logo"
               className="w-10 h-10 bg-black rounded-sm"
             />
-          </a>
+          </button>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-6">
-            <a
-              href="/"
+            <button
+              onClick={() => scrollToSection("home")}
               className="text-white hover:text-gray-300 transition-colors"
             >
               Home
-            </a>
-            <a
-              href="/features"
+            </button>
+            <button
+              onClick={() => scrollToSection("why-us")}
               className="text-white hover:text-gray-300 transition-colors"
             >
               Why Us
-            </a>
-            <a
-              href="/integrations"
+            </button>
+            <button
+              onClick={() => scrollToSection("services")}
               className="text-white hover:text-gray-300 transition-colors"
             >
               Services
-            </a>
-            <a
-              href="/pricing"
+            </button>
+            <button
+              onClick={() => scrollToSection("about")}
               className="text-white hover:text-gray-300 transition-colors"
             >
-              About
-            </a>
+              Our Technologies
+            </button>
           </div>
         </div>
 
@@ -74,12 +87,12 @@ const Navbar = () => {
           <button className="p-2 text-white hover:text-gray-300">
             <div className="w-5 h-5" /> {/* Placeholder for moon icon */}
           </button>
-          <a
-            href="/remix-template"
+          <button
+            onClick={() => scrollToSection("faq")}
             className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl transition-colors shadow-lg shadow-purple-500/30"
           >
             FAQ
-          </a>
+          </button>
         </div>
       </div>
     </nav>
