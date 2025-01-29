@@ -16,7 +16,11 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [scrolled]);
 
-  const scrollToSection = (sectionId) => {
+  interface ScrollToSectionProps {
+    sectionId: string;
+  }
+
+  const scrollToSection = ({ sectionId }: ScrollToSectionProps) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({
@@ -44,7 +48,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-8">
           {/* Logo */}
           <button 
-            onClick={() => scrollToSection("home")} 
+            onClick={() => scrollToSection({ sectionId: "home" })} 
             className="bg-white rounded-lg"
           >
             <img
@@ -57,25 +61,25 @@ const Navbar = () => {
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-6">
             <button
-              onClick={() => scrollToSection("home")}
+              onClick={() => scrollToSection({ sectionId: "home" })}
               className="text-white hover:text-gray-300 transition-colors"
             >
               Home
             </button>
             <button
-              onClick={() => scrollToSection("why-us")}
+              onClick={() => scrollToSection({ sectionId: "why-us" })}
               className="text-white hover:text-gray-300 transition-colors"
             >
               Why Us
             </button>
             <button
-              onClick={() => scrollToSection("services")}
+              onClick={() => scrollToSection({ sectionId: "services" })}
               className="text-white hover:text-gray-300 transition-colors"
             >
               Services
             </button>
             <button
-              onClick={() => scrollToSection("about")}
+              onClick={() => scrollToSection({ sectionId: "about" })}
               className="text-white hover:text-gray-300 transition-colors"
             >
               Our Technologies
@@ -88,7 +92,7 @@ const Navbar = () => {
             <div className="w-5 h-5" /> {/* Placeholder for moon icon */}
           </button>
           <button
-            onClick={() => scrollToSection("faq")}
+            onClick={() => scrollToSection({ sectionId: "faq" })}
             className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl transition-colors shadow-lg shadow-purple-500/30"
           >
             FAQ
