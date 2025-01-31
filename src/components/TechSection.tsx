@@ -10,12 +10,12 @@ const IntegrationBox = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "z-10 flex items-center gap-2 rounded-lg bg-zinc-900 px-4 py-2.5 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        "z-10 flex items-center gap-2 rounded-lg  bg-gray-50 dark:bg-zinc-900  px-4 py-2.5 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
         className
       )}
     >
       {children}
-      <span className="text-white font-medium">{name}</span>
+      <span className="text-black dark:text-white font-medium">{name}</span>
     </div>
   );
 });
@@ -25,7 +25,7 @@ const CenterIcon = () => (
   <div className="size-16 z-10 rounded-xl border-2 border-purple-500/20 bg-zinc-900 p-4 shadow-md shadow-black">
     <svg
       viewBox="0 0 24 24"
-      className="size-full text-white"
+      className="size-full dark:text-white"
       fill="currentColor"
     >
       <path d="M7 14.5l5-5 5 5" />
@@ -44,11 +44,11 @@ export default function TechSection() {
   const centerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="w-full min-h-screen bg-transparent flex flex-col items-center py-20 px-4">
+    <div className="w-full min-h-screen bg-white dark:bg-transparent flex flex-col items-center py-20 px-4">
       <h1 className="text-4xl font-bold text-white mb-3">
-        Our <span className="text-gray-500">Technologies</span>
+        Our <span className="text-black dark:text-gray-500">Technologies</span>
       </h1>
-      <p className="text-gray-400 text-center max-w-xl mb-20">
+      <p className="text-black dark:text-gray-400 text-center max-w-xl mb-20">
         Connect UTECH with your favorite Tech like AI and App developement.
         Enjoy a unified workflow for enhanced productivity and efficiency.
       </p>

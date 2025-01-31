@@ -11,14 +11,14 @@ const TopClients = () => {
   ];
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-20 bg-transparent ">
+    <div className="w-full max-w-7xl mx-auto px-4 py-20 bg-white dark:bg-transparent ">
       {/* Title with decorative lines */}
       <div className="flex items-center justify-center mb-20">
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-        <h2 className="text-3xl font-bold text-slate-300 px-8 whitespace-nowrap">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-900  dark:via-gray-300 to-transparent" />
+        <h2 className="text-3xl font-bold text-black dark:text-slate-300 px-8 whitespace-nowrap">
           Our Top clients
         </h2>
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-900  dark:via-gray-300 to-transparent" />
       </div>
 
       {/* Clients grid */}
@@ -31,7 +31,7 @@ const TopClients = () => {
             <div className="relative">
               {/* Logo placeholder */}
               <div className="w-32 h-16 flex items-center justify-center">
-                <span className="text-lg text-gray-300 font-medium group-hover:text-gray-400 transition-colors duration-300">
+                <span className="text-lg text-black dark:text-gray-300 font-medium group-hover:text-gray-400 transition-colors duration-300">
                   {client.name}
                 </span>
               </div>

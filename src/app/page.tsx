@@ -15,9 +15,9 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="bg-black h-screen text-white items-center justify-center align-middle font-poppins">
+    <div className="bg-white dark:bg-black h-screen text-white items-center justify-center align-middle font-poppins">
       <ScrollProgress className="top-0" />
-      <div id="home" className="min-h-screen">
+      <div id="home" className="min-h-screen ">
         {/* Home section content */}
         <Hero />
       </div>

@@ -45,7 +45,7 @@ export default function FAQSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="min-h-screen bg-transparent text-white py-16 px-4 sm:px-6 lg:px-8"
+      className="min-h-screen bg-transparent text-black dark:text-white py-16 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-3xl mx-auto">
         <h2 className="text-4xl sm:text-4xl font-semibold mb-4">
