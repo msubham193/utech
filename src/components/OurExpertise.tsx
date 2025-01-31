@@ -51,7 +51,7 @@ const OurExpertise = () => {
             return (
               <div
                 key={index}
-                cla1000ssName={`inter-var transition-all duration-500 ease-in-out ${
+                className={`inter-var transition-all duration-500 ease-in-out ${
                   isCenter ? "scale-110" : "scale-90 opacity-75"
                 } cursor-pointer`}
                 onClick={() => handleClick(cardIndex)}
