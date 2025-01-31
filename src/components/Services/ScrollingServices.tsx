@@ -31,22 +31,24 @@ const ScrollingServices = () => {
   ];
 
   return (
-    <div className="relative w-full overflow-hidden bg-[#121219] py-8">
+    <div className="relative w-full overflow-hidden bg-gray-50 dark:bg-[#121219] py-8">
       {/* Left gradient overlay */}
-      <div className="absolute left-0 top-0 z-10 h-full w-56 bg-gradient-to-r from-[#121219] to-transparent" />
+      <div className="absolute left-0 top-0 z-10 h-full w-56 bg-gradient-to-r from-gray-50 to-transparent dark:from-[#121219] dark:to-transparent" />
 
       {/* Right gradient overlay */}
-      <div className="absolute right-0 top-0 z-10 h-full w-56 bg-gradient-to-l from-[#121219] to-transparent" />
+      <div className="absolute right-0 top-0 z-10 h-full w-56 bg-gradient-to-l from-gray-50 to-transparent dark:from-[#121219] dark:to-transparent" />
 
       {/* Scrolling content */}
       <div className="flex animate-scroll relative">
         {services.map((service, index) => (
           <div key={index} className="flex items-center flex-shrink-0 mx-8">
             <div className="flex items-center">
-              <div className="bg-gray-800 rounded-full p-2 mr-4">
-                <div className="text-white">{service.icon}</div>
+              <div className="bg-gray-100 dark:bg-gray-800 rounded-full p-2 mr-4 shadow-lg transition-colors duration-200">
+                <div className="text-gray-700 dark:text-white transition-colors duration-200">
+                  {service.icon}
+                </div>
               </div>
-              <h3 className="text-lg font-medium text-slate-300">
+              <h3 className="text-lg font-medium text-gray-700 dark:text-slate-300 transition-colors duration-200">
                 {service.title}
               </h3>
             </div>
@@ -66,6 +68,11 @@ const ScrollingServices = () => {
 
         .animate-scroll {
           animation: scroll 20s linear infinite;
+        }
+
+        /* Optional: Pause animation on hover */
+        .animate-scroll:hover {
+          animation-play-state: paused;
         }
       `}</style>
     </div>
