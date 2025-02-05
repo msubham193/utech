@@ -44,8 +44,8 @@ export default function TechSection() {
   const centerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="w-full min-h-screen bg-white dark:bg-transparent flex flex-col items-center py-20 px-4">
-      <h1 className="text-4xl font-bold text-white mb-3">
+    <div className="w-full min-h-screen  dark:bg-transparent flex flex-col items-center  px-4">
+      <h1 className="text-4xl font-bold text-black dark:text-white mb-3">
         Our <span className="text-black dark:text-gray-500">Technologies</span>
       </h1>
       <p className="text-black dark:text-gray-400 text-center max-w-xl mb-20">

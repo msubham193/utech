@@ -54,7 +54,7 @@ const Navbar = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "top-5 w-[100%] backdrop-blur-sm py-2 shadow-lg rounded-2xl"
+          ? "top-5 w-[100%] backdrop-blur-sm py-2  rounded-2xl"
           : "bg-transparent py-4"
       }`}
     >
@@ -108,7 +108,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          {/* <button
+          <button
             onClick={toggleTheme}
             className="p-2 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             aria-label="Toggle theme"
@@ -118,7 +118,7 @@ const Navbar = () => {
             ) : (
               <Moon className="w-5 h-5" />
             )}
-          </button> */}
+          </button>
           <button
             onClick={() => scrollToSection({ sectionId: "faq" })}
             className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl transition-colors shadow-lg shadow-purple-500/30"

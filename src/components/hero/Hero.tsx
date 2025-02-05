@@ -42,7 +42,7 @@ const Hero = () => {
       </div>
 
       {/* Bottom Section - App Screenshot */}
-      <div className="max-w-6xl mx-auto mb-36">
+      <div className="max-w-6xl mx-auto pb-36">
         <NeonGradientCard className="relative">
           <div className="bg-gradient-to-r from-purple-400/20 to-blue-400/20 dark:from-purple-500/30 dark:to-blue-500/30 absolute inset-0 blur-3xl -z-10" />
           <img
