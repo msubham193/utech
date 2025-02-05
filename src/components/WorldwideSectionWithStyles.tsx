@@ -3,7 +3,7 @@ import React from "react";
 const WorldwideSection = () => {
   return (
     <div className="w-full  mx-auto px-4 py-16 bg-white dark:bg-transparent ">
-      <h2 className="text-4xl font-bold text-center text-black dark:text-gray mb-16">
+      <h2 className="text-4xl font-bold text-center text-black dark:text-gray-200 mb-16">
         We are worldwide
       </h2>
 

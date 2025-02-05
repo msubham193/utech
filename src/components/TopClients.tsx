@@ -11,7 +11,7 @@ const TopClients = () => {
   ];
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-20 bg-white dark:bg-transparent ">
+    <div className="w-full  mx-auto px-4 py-20 bg-white dark:bg-transparent ">
       {/* Title with decorative lines */}
       <div className="flex items-center justify-center mb-20">
         <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-900  dark:via-gray-300 to-transparent" />
