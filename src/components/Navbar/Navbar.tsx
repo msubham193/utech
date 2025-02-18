@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useState("dark");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Get initial theme from localStorage or system preference
     const savedTheme =
       localStorage.getItem("theme") ||
       (window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -19,27 +19,18 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrolled]);
+  }, []);
 
-  interface ScrollToSectionProps {
-    sectionId: string;
-  }
-
-  const scrollToSection = ({ sectionId }: ScrollToSectionProps) => {
+  const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setMenuOpen(false);
     }
   };
 
@@ -54,22 +45,22 @@ const Navbar = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "top-5 w-[100%] backdrop-blur-sm py-2  rounded-2xl"
+          ? "top-5 w-[100%] backdrop-blur-sm py-2 rounded-2xl"
           : "bg-transparent py-4"
       }`}
     >
       <div
         className={`max-w-7xl mx-auto px-6 flex items-center justify-between ${
           scrolled
-            ? "bg-gray-800/60 dark:bg-gray-800/60 bg-white/60 top-5 w-[90%] backdrop-blur-sm py-2 shadow-lg rounded-2xl"
+            ? "bg-gray-800/60 dark:bg-gray-800/60 bg-white/60 backdrop-blur-sm py-2 shadow-lg rounded-2xl"
             : "bg-transparent py-4"
         }`}
       >
-        <div className="flex items-center space-x-8">
+        <div className="flex items-center space-x-4 md:space-x-8">
           {/* Logo */}
           <button
-            onClick={() => scrollToSection({ sectionId: "home" })}
-            className="bg-white dark:bg-gray-800 rounded-lg"
+            onClick={() => scrollToSection("home")}
+            className="bg-white dark:bg-gray-800 rounded-lg p-1"
           >
             <img
               src="/logo.png"
@@ -78,55 +69,63 @@ const Navbar = () => {
             />
           </button>
 
-          {/* Navigation Links */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <button
-              onClick={() => scrollToSection({ sectionId: "home" })}
-              className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => scrollToSection({ sectionId: "why-us" })}
-              className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-            >
-              Why Us
-            </button>
-            <button
-              onClick={() => scrollToSection({ sectionId: "services" })}
-              className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-            >
-              Services
-            </button>
-            <button
-              onClick={() => scrollToSection({ sectionId: "about" })}
-              className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-            >
-              Our Technologies
-            </button>
+            {["home", "why-us", "services", "about"].map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(item)}
+                className="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+              >
+                {item.replace("-", " ").toUpperCase()}
+              </button>
+            ))}
           </div>
         </div>
 
+        {/* Right Side: Theme Toggle + FAQ + Mobile Menu */}
         <div className="flex items-center space-x-4">
+          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
             className="p-2 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             aria-label="Toggle theme"
           >
-            {theme === "dark" ? (
-              <Sun className="w-5 h-5" />
-            ) : (
-              <Moon className="w-5 h-5" />
-            )}
+            {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
+
+          {/* FAQ Button (Desktop) */}
           <button
-            onClick={() => scrollToSection({ sectionId: "faq" })}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl transition-colors shadow-lg shadow-purple-500/30"
+            onClick={() => scrollToSection("faq")}
+            className="hidden md:block bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl transition-colors shadow-lg shadow-purple-500/30"
           >
             FAQ
           </button>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-gray-800 dark:text-white"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Navigation Menu */}
+      {menuOpen && (
+        <div className="md:hidden absolute top-16 left-0 w-full bg-white dark:bg-gray-800 shadow-lg py-4 transition-all">
+          {["home", "why-us", "services", "about", "faq"].map((item) => (
+            <button
+              key={item}
+              onClick={() => scrollToSection(item)}
+              className="block w-full text-left px-6 py-3 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            >
+              {item.replace("-", " ").toUpperCase()}
+            </button>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
