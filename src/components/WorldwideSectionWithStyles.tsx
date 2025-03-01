@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const WorldwideSection = () => {
+  const [particles, setParticles] = useState([]);
+
+  useEffect(() => {
+    // Generate random values only on the client
+    setParticles(
+      [...Array(15)].map(() => ({
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 4}s`,
+      }))
+    );
+  }, []);
+
   return (
     <div className="w-full mx-auto px-4 sm:px-8 py-16 bg-white dark:bg-transparent">
       {/* Heading */}
@@ -41,15 +54,15 @@ const WorldwideSection = () => {
 
           {/* Floating Particles */}
           <div className="absolute inset-0 overflow-hidden">
-            {[...Array(15)].map((_, index) => (
+            {particles.map((particle, index) => (
               <div
                 key={index}
                 className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 bg-blue-500 rounded-full opacity-50"
                 style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
+                  left: particle.left,
+                  top: particle.top,
                   animation: `float 4s infinite`,
-                  animationDelay: `${Math.random() * 4}s`,
+                  animationDelay: particle.animationDelay,
                 }}
               />
             ))}

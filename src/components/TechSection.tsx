@@ -148,13 +148,13 @@ export default function TechSection() {
                   y2="34.223"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop offset="0" stop-color="#0176d0"></stop>
-                  <stop offset=".454" stop-color="#0275ce"></stop>
-                  <stop offset=".617" stop-color="#0472c7"></stop>
-                  <stop offset=".733" stop-color="#076bbc"></stop>
-                  <stop offset=".827" stop-color="#0d63ab"></stop>
-                  <stop offset=".907" stop-color="#135895"></stop>
-                  <stop offset=".933" stop-color="#16538c"></stop>
+                  <stop offset="0" stopColor="#0176d0"></stop>
+                  <stop offset=".454" stopColor="#0275ce"></stop>
+                  <stop offset=".617" stopColor="#0472c7"></stop>
+                  <stop offset=".733" stopColor="#076bbc"></stop>
+                  <stop offset=".827" stopColor="#0d63ab"></stop>
+                  <stop offset=".907" stopColor="#135895"></stop>
+                  <stop offset=".933" stopColor="#16538c"></stop>
                 </linearGradient>
                 <polygon
                   fill="url(#gFTOxFpGMtrTwKmyJmDVma_pCvIfmctRaY8_gr1)"
@@ -203,12 +203,12 @@ export default function TechSection() {
                   gradientTransform="matrix(128.602 652.9562 653.274 -128.6646 -316906.281 517189.719)"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop offset="0" stop-color="#1ba1e3"></stop>
-                  <stop offset="0" stop-color="#1ba1e3"></stop>
-                  <stop offset=".3" stop-color="#5489d6"></stop>
-                  <stop offset=".545" stop-color="#9b72cb"></stop>
-                  <stop offset=".825" stop-color="#d96570"></stop>
-                  <stop offset="1" stop-color="#f49c46"></stop>
+                  <stop offset="0" stopColor="#1ba1e3"></stop>
+                  <stop offset="0" stopColor="#1ba1e3"></stop>
+                  <stop offset=".3" stopColor="#5489d6"></stop>
+                  <stop offset=".545" stopColor="#9b72cb"></stop>
+                  <stop offset=".825" stopColor="#d96570"></stop>
+                  <stop offset="1" stopColor="#f49c46"></stop>
                 </radialGradient>
                 <path
                   fill="url(#oDvWy9qKGfkbPZViUk7TCa_eoxMN35Z6JKg_gr1)"
@@ -222,12 +222,12 @@ export default function TechSection() {
                   gradientTransform="matrix(128.602 652.9562 653.274 -128.6646 -316906.281 517189.719)"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop offset="0" stop-color="#1ba1e3"></stop>
-                  <stop offset="0" stop-color="#1ba1e3"></stop>
-                  <stop offset=".3" stop-color="#5489d6"></stop>
-                  <stop offset=".545" stop-color="#9b72cb"></stop>
-                  <stop offset=".825" stop-color="#d96570"></stop>
-                  <stop offset="1" stop-color="#f49c46"></stop>
+                  <stop offset="0" stopColor="#1ba1e3"></stop>
+                  <stop offset="0" stopColor="#1ba1e3"></stop>
+                  <stop offset=".3" stopColor="#5489d6"></stop>
+                  <stop offset=".545" stopColor="#9b72cb"></stop>
+                  <stop offset=".825" stopColor="#d96570"></stop>
+                  <stop offset="1" stopColor="#f49c46"></stop>
                 </radialGradient>
                 <path
                   fill="url(#oDvWy9qKGfkbPZViUk7TCb_eoxMN35Z6JKg_gr2)"

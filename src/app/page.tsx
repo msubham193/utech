@@ -23,62 +23,61 @@ export default function Home() {
     document.documentElement.style.overflow = "auto";
     document.body.style.height = "auto";
     document.documentElement.style.height = "auto";
-    
+
     // Fix for iOS Safari and some other mobile browsers
     document.body.style.position = "static";
-    
+
     // Handle navigation scroll issues
-    const handleNavClick = (e) => {
-      // If this is a navigation link with hash
-      if (e.target.tagName === 'A' && e.target.hash) {
-        // Ensure the page is scrollable after navigation
+    const handleNavClick = (e: globalThis.MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === "A" && (target as HTMLAnchorElement).hash) {
         setTimeout(() => {
           document.body.style.overflow = "auto";
           document.documentElement.style.overflow = "auto";
         }, 100);
       }
     };
-    
-    document.addEventListener('click', handleNavClick);
-    
+
+    document.addEventListener("click", handleNavClick as EventListener);
+
     return () => {
-      document.removeEventListener('click', handleNavClick);
+      document.removeEventListener("click", handleNavClick as EventListener);
     };
   }, []);
 
   return (
     <main className="flex min-h-screen flex-col">
       <ScrollProgress />
-      
+
       {/* Home section content */}
       <section id="home">
         <Hero />
       </section>
-      
+
       {/* Why Us section content */}
       <section id="why-us">
         <ExperienceSection />
         <TopClients />
       </section>
-      
+
       {/* Services section content */}
       <section id="services">
         <ScrollingServices />
         <OurExpertise />
         <TechSection />
       </section>
-      
+
       {/* About section content */}
       <section id="about">
         <WorldwideSectionWithStyles />
       </section>
-      
+
       {/* FAQ section content */}
       <section id="faq">
         <FAQSection />
         <NewsletterSignup />
       </section>
-      
+
       <footer>
         <FooterNav />
         <Footer />

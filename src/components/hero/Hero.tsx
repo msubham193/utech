@@ -15,9 +15,7 @@ const Hero = () => {
             <span className="text-purple-600 dark:text-purple-500"> UTECH</span>
           </h1>
           <TextAnimate className="text-gray-600 dark:text-gray-400 text-base sm:text-lg mb-8">
-            Transform task management with TodoFusion. Combine powerful to-do
-            lists, productivity tracking, and seamless integrations to stay
-            focused and achieve more
+            Empower your digital transformation with UTECH. Leverage cutting-edge solutions, seamless integrations, and powerful tools to optimize efficiency and drive success.
           </TextAnimate>
         </div>
 
@@ -48,7 +46,7 @@ const Hero = () => {
           <div className="bg-gradient-to-r from-purple-400/20 to-blue-400/20 dark:from-purple-500/30 dark:to-blue-500/30 absolute inset-0 blur-3xl -z-10" />
           <img
             src="./banner2.png"
-            alt="TodoFusion App Interface"
+            alt="UTECH App Interface"
             className="w-full rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl relative"
           />
         </NeonGradientCard>
