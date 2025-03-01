@@ -34,14 +34,15 @@ const CenterIcon = () => (
 );
 
 export default function TechSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const startifyRef = useRef<HTMLDivElement>(null);
-  const identifyRef = useRef<HTMLDivElement>(null);
-  const nexusRef = useRef<HTMLDivElement>(null);
-  const flexifyRef = useRef<HTMLDivElement>(null);
-  const landifyRef = useRef<HTMLDivElement>(null);
-  const platifyRef = useRef<HTMLDivElement>(null);
-  const centerRef = useRef<HTMLDivElement>(null);
+  // Fixed refs with non-null assertions
+  const containerRef = useRef<HTMLDivElement>(null!);
+  const startifyRef = useRef<HTMLDivElement>(null!);
+  const identifyRef = useRef<HTMLDivElement>(null!);
+  const nexusRef = useRef<HTMLDivElement>(null!);
+  const flexifyRef = useRef<HTMLDivElement>(null!);
+  const landifyRef = useRef<HTMLDivElement>(null!);
+  const platifyRef = useRef<HTMLDivElement>(null!);
+  const centerRef = useRef<HTMLDivElement>(null!);
 
   return (
     <div className="w-full min-h-screen  dark:bg-transparent flex flex-col items-center  px-4">
