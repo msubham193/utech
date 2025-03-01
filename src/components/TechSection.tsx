@@ -43,6 +43,7 @@ export default function TechSection() {
   const landifyRef = useRef<HTMLDivElement>(null!);
   const platifyRef = useRef<HTMLDivElement>(null!);
   const centerRef = useRef<HTMLDivElement>(null!);
+  
 
   return (
     <div className="w-full min-h-screen  dark:bg-transparent flex flex-col items-center  px-4">
@@ -291,61 +292,39 @@ export default function TechSection() {
 
         {/* {[startifyRef, identifyRef, nexusRef].map((fromRef, i) => ( */}
         <AnimatedBeam
-          duration={3}
-          delay={1 * 0.2}
           containerRef={containerRef}
           fromRef={startifyRef}
           toRef={centerRef}
         />
         <AnimatedBeam
-          duration={3}
-          delay={2 * 0.2}
           containerRef={containerRef}
           fromRef={identifyRef}
           toRef={centerRef}
         />
         <AnimatedBeam
-          duration={3}
-          delay={2 * 0.2}
           containerRef={containerRef}
           fromRef={nexusRef}
           toRef={centerRef}
         />
-        {/* ))} */}
 
         <AnimatedBeam
-          duration={3}
-          delay={1 * 0.2}
           containerRef={containerRef}
           fromRef={centerRef}
           toRef={flexifyRef}
           curvature={75}
-          // className="rotate-180"
-          // curvature={20}
-          // reverse
         />
 
         <AnimatedBeam
-          duration={3}
-          delay={1 * 0.2}
           containerRef={containerRef}
           fromRef={centerRef}
           toRef={landifyRef}
           curvature={0}
-          // className="rotate-180"
-          // curvature={20}
-          // reverse
         />
         <AnimatedBeam
-          duration={3}
-          delay={1 * 0.2}
           containerRef={containerRef}
           fromRef={centerRef}
           toRef={platifyRef}
           curvature={-75}
-          // className="rotate-180"
-          // curvature={20}
-          // reverse
         />
       </div>
     </div>
