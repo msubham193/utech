@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const WorldwideSection = () => {
-  const [particles, setParticles] = useState([]);
+  const [particles, setParticles] = useState<{ left: string; top: string; animationDelay: string }[]>([]);
 
   useEffect(() => {
     // Generate random values only on the client
