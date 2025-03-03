@@ -80,7 +80,7 @@ export default function Home() {
 
       <footer>
         <FooterNav />
-        <Footer />
+        {/* <Footer /> */}
       </footer>
     </main>
   );
