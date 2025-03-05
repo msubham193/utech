@@ -6,7 +6,8 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [productsDropdownOpen, setProductsDropdownOpen] = useState<boolean>(false);
+  const [productsDropdownOpen, setProductsDropdownOpen] =
+    useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -24,7 +25,6 @@ const Navbar: React.FC = () => {
     const handleScroll = (): void => {
       setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -39,11 +39,8 @@ const Navbar: React.FC = () => {
         setProductsDropdownOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [productsDropdownOpen]);
 
   const scrollToSection = (sectionId: string): void => {
@@ -64,14 +61,13 @@ const Navbar: React.FC = () => {
 
   const toggleProductsDropdown = (e: React.MouseEvent): void => {
     e.stopPropagation();
-    setProductsDropdownOpen(!productsDropdownOpen);
+    console.log("Dropdown toggled, new state:", !productsDropdownOpen);
+    setProductsDropdownOpen((prev) => !prev);
   };
 
   const toggleMobileMenu = (): void => {
     setMenuOpen(!menuOpen);
-    if (menuOpen) {
-      setProductsDropdownOpen(false);
-    }
+    if (menuOpen) setProductsDropdownOpen(false);
   };
 
   const capitalizeFirstLetter = (string: string): string => {
@@ -82,28 +78,35 @@ const Navbar: React.FC = () => {
   };
 
   const products = [
-    { id: "product1", name: "Product One", description: "Our flagship product" },
+    {
+      id: "product1",
+      name: "Product One",
+      description: "Our flagship product",
+    },
     { id: "product2", name: "Product Two", description: "Premium solution" },
-    { id: "product3", name: "Product Three", description: "Budget-friendly option" },
+    {
+      id: "product3",
+      name: "Product Three",
+      description: "Budget-friendly option",
+    },
   ];
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "top-5 w-[100%] backdrop-blur-sm py-2 rounded-2xl"
+          ? "backdrop-blur-sm py-2 shadow-lg rounded-b-2xl"
           : "bg-transparent py-4"
       }`}
     >
       <div
         className={`max-w-7xl mx-auto px-6 flex items-center justify-between ${
           scrolled
-            ? "bg-gray-800/60 dark:bg-gray-800/60 bg-white/60 backdrop-blur-sm py-2 shadow-lg rounded-2xl"
+            ? "bg-gray-800/60 dark:bg-gray-800/60 bg-white/60 backdrop-blur-sm py-2 rounded-2xl"
             : "bg-transparent py-4"
         }`}
       >
         <div className="flex items-center space-x-4 md:space-x-8">
-          {/* Logo */}
           <button
             onClick={() => scrollToSection("home")}
             className="bg-white dark:bg-gray-800 rounded-lg p-1"
@@ -115,7 +118,6 @@ const Navbar: React.FC = () => {
             />
           </button>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             {["home", "why-us", "services", "about"].map((item) => (
               <button
@@ -126,12 +128,10 @@ const Navbar: React.FC = () => {
                 {capitalizeFirstLetter(item)}
               </button>
             ))}
-            
-            {/* Products Dropdown - Desktop */}
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={toggleProductsDropdown}
-                className="flex items-center text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                className="flex items-center text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors focus:outline-none"
               >
                 Products
                 {productsDropdownOpen ? (
@@ -140,9 +140,11 @@ const Navbar: React.FC = () => {
                   <ChevronDown className="w-4 h-4 ml-1" />
                 )}
               </button>
-              
               {productsDropdownOpen && (
-                <div className="absolute left-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50">
+                <div
+                  className="absolute left-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-[100] border border-gray-200 dark:border-gray-700"
+                  style={{ top: "100%", minWidth: "200px" }}
+                >
                   {products.map((product) => (
                     <button
                       key={product.id}
@@ -161,9 +163,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Side: Theme Toggle + FAQ + Mobile Menu */}
         <div className="flex items-center space-x-4">
-          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
             className="p-2 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
@@ -175,16 +175,12 @@ const Navbar: React.FC = () => {
               <Moon className="w-5 h-5" />
             )}
           </button>
-
-          {/* FAQ Button (Desktop) */}
           <button
             onClick={() => scrollToSection("faq")}
             className="hidden md:block bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl transition-colors shadow-lg shadow-purple-500/30"
           >
             FAQ
           </button>
-
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2 text-gray-800 dark:text-white"
             onClick={toggleMobileMenu}
@@ -199,9 +195,8 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
       {menuOpen && (
-        <div className="md:hidden fixed top-16 left-0 right-0 w-full bg-white dark:bg-gray-800 shadow-lg py-4 transition-all z-40 max-h-screen overflow-y-auto">
+        <div className="md:hidden fixed top-16 left-0 right-0 w-full bg-white dark:bg-gray-800 shadow-lg py-4 transition-all z-[90] max-h-screen overflow-y-auto">
           <div className="flex flex-col w-full">
             {["home", "why-us", "services", "about", "faq"].map((item) => (
               <button
@@ -212,10 +207,8 @@ const Navbar: React.FC = () => {
                 {capitalizeFirstLetter(item)}
               </button>
             ))}
-            
-            {/* Products Section - Mobile */}
             <div className="w-full" ref={mobileDropdownRef}>
-              <button 
+              <button
                 onClick={toggleProductsDropdown}
                 className="w-full flex items-center justify-between px-6 py-3 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
@@ -226,7 +219,6 @@ const Navbar: React.FC = () => {
                   <ChevronDown className="w-4 h-4" />
                 )}
               </button>
-              
               {productsDropdownOpen && (
                 <div className="bg-gray-50 dark:bg-gray-700">
                   {products.map((product) => (
