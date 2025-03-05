@@ -31,11 +31,10 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent): void => {
-      // Only handle desktop dropdown close on outside click
       if (
-        window.innerWidth >= 768 && // md breakpoint
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        !dropdownRef.current.contains(event.target as Node) &&
+        productsDropdownOpen
       ) {
         setProductsDropdownOpen(false);
       }
@@ -45,7 +44,7 @@ const Navbar: React.FC = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [productsDropdownOpen]);
 
   const scrollToSection = (sectionId: string): void => {
     const element = document.getElementById(sectionId);
@@ -64,19 +63,17 @@ const Navbar: React.FC = () => {
   };
 
   const toggleProductsDropdown = (e: React.MouseEvent): void => {
-    e.stopPropagation(); // Prevent event bubbling
+    e.stopPropagation();
     setProductsDropdownOpen(!productsDropdownOpen);
   };
 
   const toggleMobileMenu = (): void => {
     setMenuOpen(!menuOpen);
-    // Close products dropdown when closing mobile menu
     if (menuOpen) {
       setProductsDropdownOpen(false);
     }
   };
 
-  // Function to capitalize only the first letter of each word
   const capitalizeFirstLetter = (string: string): string => {
     return string
       .split("-")
@@ -84,7 +81,6 @@ const Navbar: React.FC = () => {
       .join(" ");
   };
 
-  // Dummy product data
   const products = [
     { id: "product1", name: "Product One", description: "Our flagship product" },
     { id: "product2", name: "Product Two", description: "Premium solution" },
