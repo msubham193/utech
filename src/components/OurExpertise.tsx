@@ -2,24 +2,29 @@
 
 import React, { useState } from "react";
 import { useSwipeable } from "react-swipeable";
+import { useRouter } from "next/navigation"; // Import useRouter for navigation
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
 
 const OurExpertise = () => {
+  const router = useRouter(); // Initialize router
   const websites = [
     {
       title: "Website Development",
       image:
         "https://image.lexica.art/full_webp/3dd66761-fda6-45f2-a8ce-70c4556fbb09",
+      path: "/expertise/website-development", // Define route
     },
     {
       title: "UI/UX Development",
       image:
         "https://images.unsplash.com/photo-1586717799252-bd134ad00e26?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      path: "/expertise/ui-ux-development", // Define route
     },
     {
       title: "iOS & Android Mobile Apps",
       image:
         "https://image.lexica.art/full_webp/cf3211c0-c6a4-487a-99e3-d6d17d7c6643",
+      path: "/expertise/mobile-apps", // Define route
     },
   ];
 
@@ -40,6 +45,11 @@ const OurExpertise = () => {
       websites[activeIndex],
       websites[(activeIndex + 1) % websites.length],
     ];
+  };
+
+  // Handle navigation on card click
+  const handleCardClick = (path) => {
+    router.push(path); // Navigate to the specified path
   };
 
   return (
@@ -64,7 +74,10 @@ const OurExpertise = () => {
                 className={`inter-var transition-all duration-500 ease-in-out ${
                   isCenter ? "scale-100 sm:scale-110" : "scale-90 opacity-75"
                 } cursor-pointer`}
-                onClick={() => setActiveIndex(cardIndex)}
+                onClick={() => {
+                  setActiveIndex(cardIndex); // Update active index
+                  handleCardClick(site.path); // Navigate to the specific page
+                }}
               >
                 <CardContainer>
                   <CardBody
@@ -106,6 +119,10 @@ const OurExpertise = () => {
                           text-white dark:text-black 
                           hover:bg-gray-800 dark:hover:bg-gray-100
                           text-xs font-bold"
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent card click from triggering
+                          handleCardClick(site.path); // Navigate on button click
+                        }}
                       >
                         See details
                       </CardItem>
