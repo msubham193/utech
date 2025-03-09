@@ -6,8 +6,8 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [productsDropdownOpen, setProductsDropdownOpen] =
-    useState<boolean>(false);
+  const [productsDropdownOpen, setProductsDropdownOpen] = useState<boolean>(false);
+  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -79,15 +79,19 @@ const Navbar: React.FC = () => {
 
   const products = [
     {
-      id: "product1",
-      name: "Product One",
-      description: "Our flagship product",
+      id: "app-development",
+      name: "App Development",
+      description: "Mobile and web application development services tailored to your business needs. We specialize in iOS, Android, and cross-platform solutions."
     },
-    { id: "product2", name: "Product Two", description: "Premium solution" },
+    { 
+      id: "ui-development", 
+      name: "UI Development",
+      description: "User interface design and development with focus on accessibility, usability, and modern aesthetics for exceptional user experiences."
+    },
     {
-      id: "product3",
-      name: "Product Three",
-      description: "Budget-friendly option",
+      id: "software-development",
+      name: "Software Development",
+      description: "Custom software solutions for enterprises including CRM, ERP, data management systems, and business process automation tools."
     },
   ];
 
@@ -102,7 +106,7 @@ const Navbar: React.FC = () => {
       <div
         className={`max-w-7xl mx-auto px-6 flex items-center justify-between ${
           scrolled
-            ? "bg-gray-800/60 dark:bg-gray-800/60 bg-white/60 backdrop-blur-sm py-2 rounded-2xl"
+            ? "dark:bg-gray-800/60 bg-white/60 backdrop-blur-sm py-2 rounded-2xl"
             : "bg-transparent py-4"
         }`}
       >
@@ -128,7 +132,15 @@ const Navbar: React.FC = () => {
                 {capitalizeFirstLetter(item)}
               </button>
             ))}
-            <div className="relative" ref={dropdownRef}>
+            <div 
+              className="relative" 
+              ref={dropdownRef}
+              onMouseEnter={() => setProductsDropdownOpen(true)}
+              onMouseLeave={() => {
+                setProductsDropdownOpen(false);
+                setHoveredProduct(null);
+              }}
+            >
               <button
                 onClick={toggleProductsDropdown}
                 className="flex items-center text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors focus:outline-none"
@@ -140,25 +152,74 @@ const Navbar: React.FC = () => {
                   <ChevronDown className="w-4 h-4 ml-1" />
                 )}
               </button>
-              {productsDropdownOpen && (
-                <div
-                  className="absolute left-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-[100] border border-gray-200 dark:border-gray-700"
-                  style={{ top: "100%", minWidth: "200px" }}
-                >
-                  {products.map((product) => (
-                    <button
-                      key={product.id}
-                      onClick={() => scrollToSection(product.id)}
-                      className="w-full text-left px-4 py-2 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                    >
-                      <div className="font-medium">{product.name}</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
-                        {product.description}
-                      </div>
-                    </button>
+              <div
+                className={`absolute left-0 mt-2 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-[100] border border-gray-200 dark:border-gray-700 transition-all duration-300 origin-top flex overflow-hidden ${
+                  productsDropdownOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+                }`}
+                style={{ 
+                  top: "100%", 
+                  width: hoveredProduct ? "500px" : "250px",
+                  transitionProperty: "opacity, transform, width"
+                }}
+              >
+                <div className="w-full min-w-[200px]">
+                  {products.map((product, index) => (
+                    <div key={product.id} className="relative">
+                      <button
+                        onClick={() => scrollToSection(product.id)}
+                        onMouseEnter={() => setHoveredProduct(product.id)}
+                        className={`w-full text-left px-4 py-3 text-sm text-gray-800 dark:text-white hover:bg-purple-500/10 dark:hover:bg-gray-700 transition-all border-b border-gray-100 dark:border-gray-700 ${
+                          hoveredProduct === product.id ? "bg-gray-100 dark:bg-gray-700" : ""
+                        } ${
+                          productsDropdownOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+                        }`}
+                        style={{ 
+                          transitionDelay: `${index * 75}ms`,
+                          transitionProperty: "transform, opacity, background-color",
+                          transitionDuration: "200ms"
+                        }}
+                      >
+                        <div className="font-medium">{product.name}</div>
+                      </button>
+                    </div>
                   ))}
                 </div>
-              )}
+                
+                {hoveredProduct && (
+                  <div 
+                  className="p-6 bg-gray-900 transition-all duration-200 ease-in-out relative overflow-hidden"
+                  style={{
+                    opacity: hoveredProduct ? 1 : 0,
+                    transform: hoveredProduct ? "translateX(0)" : "translateX(-10px)",
+                    width: "40%",  // Ensuring width consistency
+                    height: "40%", // Ensuring height consistency
+                    minWidth: "200px", // Prevents too small boxes
+                    maxHeight: "300px" // Prevents overflow
+                  }}
+                >
+                
+                    {/* Decorative elements for aesthetic design */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/10 rounded-full -ml-12 -mb-12 blur-xl"></div>
+                    
+                    <div className="relative z-10">
+                      <h4 className="font-medium text-sm mb-2 text-white border-b border-purple-500/30 pb-2 inline-block">
+                        {products.find(p => p.id === hoveredProduct)?.name}
+                      </h4>
+                      <p className="text-sm text-gray-300 mt-3 leading-relaxed">
+                        {products.find(p => p.id === hoveredProduct)?.description}
+                      </p>
+                      <button 
+                        onClick={() => scrollToSection(hoveredProduct)}
+                        className="mt-4 text-xs font-medium text-purple-300 hover:text-purple-200 transition-colors flex items-center"
+                      >
+                        Learn more
+                        <ChevronDown className="w-3 h-3 ml-1 rotate-270 transform" />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -219,19 +280,35 @@ const Navbar: React.FC = () => {
                   <ChevronDown className="w-4 h-4" />
                 )}
               </button>
-              {productsDropdownOpen && (
-                <div className="bg-gray-50 dark:bg-gray-700">
-                  {products.map((product) => (
+              <div 
+                className={`bg-gray-900 transition-all duration-300 origin-top overflow-hidden ${
+                  productsDropdownOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                {products.map((product, index) => (
+                  <div
+                    key={product.id}
+                    className={`px-8 py-4 border-b border-gray-800 ${
+                      productsDropdownOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+                    }`}
+                    style={{ 
+                      transitionDelay: `${index * 75}ms`,
+                      transitionProperty: "transform, opacity",
+                      transitionDuration: "200ms"
+                    }}
+                  >
                     <button
-                      key={product.id}
                       onClick={() => scrollToSection(product.id)}
-                      className="w-full text-left px-8 py-3 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                      className="w-full text-left"
                     >
-                      <div className="font-medium">{product.name}</div>
+                      <div className="font-medium text-white mb-1">{product.name}</div>
+                      <div className="text-xs text-gray-400 mt-1">
+                        {product.description}
+                      </div>
                     </button>
-                  ))}
-                </div>
-              )}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
