@@ -42,64 +42,64 @@ export default function FAQSection() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      className="min-h-screen bg-transparent text-black dark:text-white py-16 px-4 sm:px-6 lg:px-8"
-    >
-      <div className="max-w-3xl mx-auto">
-        {/* Heading */}
-        <h2 className="text-2xl sm:text-4xl font-semibold mb-4">
-          Frequently Asked <span className="text-gray-500">Questions</span>
-        </h2>
-        <p className="text-gray-400 text-sm sm:text-base mb-12">
-          Seamlessly use your preferred tools for unified work, start to finish.
-        </p>
-
-        {/* FAQ Items */}
-        <div className="space-y-4">
-          {faqData.map((item, index) => (
-            <div key={index} className="border-b border-gray-800">
-              {/* Question */}
-              <button
-                onClick={() =>
-                  setExpandedIndex(expandedIndex === index ? null : index)
-                }
-                className="w-full py-3 sm:py-4 flex justify-between items-center text-left focus:outline-none"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+    className="min-h-screen bg-gray-50 dark:bg-transparent text-black dark:text-white py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300"
+  >
+    <div className="max-w-3xl mx-auto">
+      {/* Heading */}
+      <h2 className="text-2xl sm:text-4xl font-semibold mb-4 text-gray-900 dark:text-white transition-colors duration-300">
+        Frequently Asked <span className="text-gray-500 dark:text-gray-400 transition-colors duration-300">Questions</span>
+      </h2>
+      <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-12 transition-colors duration-300">
+        Seamlessly use your preferred tools for unified work, start to finish.
+      </p>
+  
+      {/* FAQ Items */}
+      <div className="space-y-4">
+        {faqData.map((item, index) => (
+          <div key={index} className="border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+            {/* Question */}
+            <button
+              onClick={() =>
+                setExpandedIndex(expandedIndex === index ? null : index)
+              }
+              className="w-full py-3 sm:py-4 flex justify-between items-center text-left focus:outline-none"
+            >
+              <span className="text-sm sm:text-lg font-medium text-gray-900 dark:text-white transition-colors duration-300">
+                {item.question}
+              </span>
+              <motion.div
+                animate={{ rotate: expandedIndex === index ? 45 : 0 }}
+                transition={{ duration: 0.2 }}
               >
-                <span className="text-sm sm:text-lg font-medium">
-                  {item.question}
-                </span>
+                <Plus className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500 dark:text-gray-400 transition-colors duration-300" />
+              </motion.div>
+            </button>
+  
+            {/* Answer (Collapsible) */}
+            <AnimatePresence>
+              {expandedIndex === index && (
                 <motion.div
-                  animate={{ rotate: expandedIndex === index ? 45 : 0 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
                 >
-                  <Plus className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" />
+                  <p className="pb-4 sm:pb-6 text-gray-600 dark:text-gray-400 text-sm sm:text-base transition-colors duration-300">
+                    {item.answer}
+                  </p>
                 </motion.div>
-              </button>
-
-              {/* Answer (Collapsible) */}
-              <AnimatePresence>
-                {expandedIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <p className="pb-4 sm:pb-6 text-gray-400 text-sm sm:text-base">
-                      {item.answer}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
-        </div>
+              )}
+            </AnimatePresence>
+          </div>
+        ))}
       </div>
-    </motion.div>
+    </div>
+  </motion.div>
   );
 }
 

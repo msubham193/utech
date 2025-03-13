@@ -1,6 +1,13 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { Moon, Sun, Menu, X, ChevronDown, ChevronUp } from "lucide-react";
+import Link from "next/link";
+
+interface ProductType {
+  id: string;
+  name: string;
+  description: string;
+}
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -77,7 +84,7 @@ const Navbar: React.FC = () => {
       .join(" ");
   };
 
-  const products = [
+  const products: ProductType[] = [
     {
       id: "app-development",
       name: "App Development",
@@ -111,16 +118,18 @@ const Navbar: React.FC = () => {
         }`}
       >
         <div className="flex items-center space-x-4 md:space-x-8">
-          <button
-            onClick={() => scrollToSection("home")}
-            className="bg-white dark:bg-gray-800 rounded-lg p-1"
-          >
-            <img
-              src="/logo.png"
-              alt="Logo"
-              className="w-10 h-10 bg-black dark:bg-white rounded-sm"
-            />
-          </button>
+          <Link href="/">
+            <div 
+              onClick={() => scrollToSection("home")}
+              className="bg-white dark:bg-gray-800 rounded-lg p-1"
+            >
+              <img
+                src="/logo.png"
+                alt="Logo"
+                className="w-10 h-10 bg-black dark:bg-white rounded-sm"
+              />
+            </div>
+          </Link>
 
           <div className="hidden md:flex items-center space-x-6">
             {["home", "why-us", "services", "about"].map((item) => (
@@ -187,17 +196,16 @@ const Navbar: React.FC = () => {
                 
                 {hoveredProduct && (
                   <div 
-                  className="p-6 bg-gray-900 transition-all duration-200 ease-in-out relative overflow-hidden"
-                  style={{
-                    opacity: hoveredProduct ? 1 : 0,
-                    transform: hoveredProduct ? "translateX(0)" : "translateX(-10px)",
-                    width: "40%",  // Ensuring width consistency
-                    height: "40%", // Ensuring height consistency
-                    minWidth: "200px", // Prevents too small boxes
-                    maxHeight: "300px" // Prevents overflow
-                  }}
-                >
-                
+                    className="p-6 bg-gray-900 transition-all duration-200 ease-in-out relative overflow-hidden"
+                    style={{
+                      opacity: hoveredProduct ? 1 : 0,
+                      transform: hoveredProduct ? "translateX(0)" : "translateX(-10px)",
+                      width: "40%",
+                      height: "40%",
+                      minWidth: "200px",
+                      maxHeight: "300px"
+                    }}
+                  >
                     {/* Decorative elements for aesthetic design */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
                     <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/10 rounded-full -ml-12 -mb-12 blur-xl"></div>

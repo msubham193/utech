@@ -22,17 +22,16 @@ const IntegrationBox = forwardRef<
 IntegrationBox.displayName = "IntegrationBox";
 
 const CenterIcon = () => (
-  <div className="size-16 z-10 rounded-xl border-2 border-purple-500/20 bg-zinc-900 p-4 shadow-md shadow-black">
+  <div className="size-16 z-10 rounded-xl border-2 border-purple-500/20 bg-white dark:bg-zinc-900 p-4 shadow-md shadow-gray-200 dark:shadow-black transition-colors duration-300">
     <svg
       viewBox="0 0 24 24"
-      className="size-full dark:text-white"
+      className="size-full text-gray-800 dark:text-white transition-colors duration-300"
       fill="currentColor"
     >
       <path d="M7 14.5l5-5 5 5" />
     </svg>
   </div>
 );
-
 export default function TechSection() {
   // Fixed refs with non-null assertions
   const containerRef = useRef<HTMLDivElement>(null!);
@@ -46,8 +45,8 @@ export default function TechSection() {
   
 
   return (
-    <div className="w-full min-h-screen  dark:bg-transparent flex flex-col items-center  px-4">
-      <h1 className="text-4xl font-bold text-black dark:text-white mb-3">
+    <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 dark:bg-transparent flex flex-col items-center px-4 transition-colors duration-300">
+      <h1 className="text-4xl font-bold text-black dark:text-white mb-3 transition-colors duration-300">
         Our <span className="text-black dark:text-gray-500">Technologies</span>
       </h1>
       <p className="text-black dark:text-gray-400 text-center max-w-xl mb-20">
