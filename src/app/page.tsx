@@ -57,7 +57,6 @@ export default function Home() {
       {/* Why Us section content */}
       <section id="why-us">
         <ExperienceSection />
-        <TopClients />
       </section>
 
       {/* Services section content */}
@@ -75,6 +74,7 @@ export default function Home() {
       {/* FAQ section content */}
       <section id="faq">
         <FAQSection />
+        <TopClients />
         <NewsletterSignup />
       </section>
 

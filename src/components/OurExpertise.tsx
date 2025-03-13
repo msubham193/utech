@@ -48,7 +48,7 @@ const OurExpertise = () => {
   };
 
   // Handle navigation on card click
-  const handleCardClick = (path) => {
+  const handleCardClick = (path: string) => {
     router.push(path); // Navigate to the specified path
   };
 
@@ -119,7 +119,7 @@ const OurExpertise = () => {
                           text-white dark:text-black 
                           hover:bg-gray-800 dark:hover:bg-gray-100
                           text-xs font-bold"
-                        onClick={(e) => {
+                        onClick={(e: any) => {
                           e.stopPropagation(); // Prevent card click from triggering
                           handleCardClick(site.path); // Navigate on button click
                         }}
