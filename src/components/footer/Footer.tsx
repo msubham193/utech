@@ -1,9 +1,8 @@
-import React from "react";
+import React from "react"; 
 import { Mail, Facebook, Twitter, Instagram } from "lucide-react";
 
 const FooterNav = () => {
   const currentYear = new Date().getFullYear();
-
   return (
     <footer className=" bg-gradient-to-b dark:from-transparent dark:to-black from-white to-white text-white">
       <div className="container mx-auto px-4 py-12">
@@ -14,20 +13,11 @@ const FooterNav = () => {
               Services
             </h3>
             <ul className="space-y-2 text-sm">
-              {[
-                "UI UX Design",
-                "Web Development",
-                "Mobile Apps",
-                "Digital Marketing",
-                "Cloud Services",
-                "Ecommerce",
-                "AWS Hosting",
-              ].map((service) => (
+              {["UI UX Design", "Web Development", "Mobile Apps", "Digital Marketing", "Cloud Services", "Ecommerce", "AWS Hosting"].map((service) => (
                 <li key={service}>{service}</li>
               ))}
             </ul>
           </div>
-
           {/* Contact Column */}
           <div className="mx-auto w-full max-w-xs dark:text-white text-black">
             <h3 className="text-lg font-semibold mb-4 border-b  dark:border-white border-black pb-2">
@@ -36,10 +26,11 @@ const FooterNav = () => {
             <address className="not-italic space-y-2 text-sm dark:text-white text-black">
               <p>PC Plaza, Rasulgarh</p>
               <p>Bhubaneswar, Odisha - 751010</p>
-              <p>+91 7205580247</p>
-              <p>utechsolutionspvtltd@gmail.com</p>
+              <p>+91 8984140247</p>
+              <p>+91 8018606465</p>
+              <p>hr@utkaltechsolutions.com</p>
+              <p>sales@utkaltechsolutions.com</p>
             </address>
-
             <div className="flex space-x-4 mt-4 dark:text-white text-black">
               <a href="#" aria-label="Facebook">
                 <Facebook className="w-6 h-6" />
@@ -55,7 +46,6 @@ const FooterNav = () => {
               </a>
             </div>
           </div>
-
           {/* Legal Column */}
           <div className="mx-auto w-full max-w-xs dark:text-white text-black">
             <h3 className="text-lg font-semibold mb-4 border-b  dark:border-white border-black pb-2">
@@ -81,7 +71,6 @@ const FooterNav = () => {
           </div>
         </div>
       </div>
-
       {/* Separate Copyright Section */}
       <div className="dark:bg-black bg-white dark:text-white text-black py-4">
         <div className="container mx-auto px-4 text-center">

@@ -21,9 +21,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Utech",
-  description:
-    "utkaltechsolutions is a software development company that provides software solutions to the Internet community and provides services to the Clients",
+  title: "UTech Solutions",
+  description: "UTech Solutions is a leading software development company providing innovative technology solutions.",
+  icons: {
+    icon: '/logo.png',
+  },
 };
 
 export default function RootLayout({
